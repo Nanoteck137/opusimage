@@ -14,6 +14,7 @@ parser.add_argument("--image")
 parser.add_argument("--title")
 parser.add_argument("--album")
 parser.add_argument("--artist")
+parser.add_argument("--number")
 parser.add_argument("--remove", action="store_true")
 
 def get_mime(ext):
@@ -56,6 +57,9 @@ def main():
         
     if args.artist:
         audio['artist'] = args.artist
+
+    if args.number:
+        audio['tracknumber'] = args.number
 
     audio.save()
 
