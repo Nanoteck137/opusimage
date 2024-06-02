@@ -1,5 +1,5 @@
 {
-  description = "Simple program to add cover images to opus files";
+  description = "Simple program to add tags and cover image to opus file";
 
   inputs = {
     nixpkgs.url      = "github:NixOS/nixpkgs/nixos-unstable";
@@ -14,16 +14,19 @@
           inherit system overlays;
         };
 
+        version = pkgs.lib.strings.fileContents "${self}/version";
+        fullVersion = ''${version}-${self.dirtyShortRev or self.shortRev or "dirty"}'';
+
         app = pkgs.python3Packages.buildPythonPackage {
-          pname = "opusimage";
-          version = "0.0.1";
+          pname = "tagopus";
+          version = fullVersion;
 
           src = ./.;
 
           propagatedBuildInputs = [ pkgs.python3Packages.mutagen ];
 
           postInstall = ''
-            mv "$out/bin/opusimage.py" "$out/bin/opusimage"
+            mv "$out/bin/tagopus.py" "$out/bin/tagopus"
           '';
         };
       in

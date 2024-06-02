@@ -8,7 +8,7 @@ from base64 import b64encode
 import argparse
 import os
 
-parser = argparse.ArgumentParser(prog = "opusimage")
+parser = argparse.ArgumentParser(prog = "tagopus")
 parser.add_argument("opusfile")
 parser.add_argument("--image")
 parser.add_argument("--title")

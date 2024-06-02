@@ -1,6 +1,6 @@
 from setuptools import setup
 
 setup(
-   name='opusimage',
-   scripts=["opusimage.py"],
+   name='tagopus',
+   scripts=["tagopus.py"],
 )
